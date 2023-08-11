@@ -37,7 +37,7 @@ export const usersData: User[] = [
     {
         id: 12,
         name: "Leny Arriaga",
-        username:"leny",
+        username:"poncho",
         initials:"LA",
         role:"ADMIN"
     },
@@ -58,7 +58,7 @@ export const usersData: User[] = [
     {
         id: 12,
         name: "Leny Arriaga",
-        username:"leny",
+        username:"ataulgo",
         initials:"LA",
         role:"ADMIN"
     },
