@@ -100,8 +100,8 @@ export const Clients = ()=>{
     },
 
     {
-        accessorKey:"sampleSite",
-        header:"Sample Site"
+        accessorKey:"billingAddress",
+        header:"Billing Address"
     },
 
     {
@@ -181,8 +181,8 @@ export const Clients = ()=>{
          },
 
          {
-            accessor:"sampleSite",
-            placeholder:"Filter By Sample Site"
+            accessor:"billingAddress",
+            placeholder:"Filter By Billing Address"
          }
     ] as FilterProps[];
 
