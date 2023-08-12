@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { useNavigate } from "react-router-dom"
 
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -29,6 +30,8 @@ const logInSchema = z.object({
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
  
 
+  const navigate = useNavigate()
+
   const form = useForm<z.infer<typeof logInSchema>>({
     resolver: zodResolver(logInSchema),
     defaultValues: {
@@ -42,6 +45,8 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values)
+
+    navigate("/")
   }
 
 

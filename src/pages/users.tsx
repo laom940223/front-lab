@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom"
+
 import { Button } from "@/components/ui/button"
-import { DataTable } from "@/my-components/data-table"
+import { DataTable, FilterProps } from "@/my-components/data-table"
 import { User, usersData } from "@/types/user"
 
 import { ColumnDef } from "@tanstack/react-table"
@@ -106,16 +106,25 @@ export const columns: ColumnDef<User>[] = [
 export const Users = ()=>{
 
 
+    const filters = [
+        {
+
+            accessor:"username",
+            placeholder:"Filter by username"
+
+        }
+    ] as FilterProps[]
+
     return (
     
     <div className="w-full flex flex-wrap flex-row">
 
-        <div className="w-full flex flex-col items-end">
+        <div className="w-full flex flex-col items-end pr-4">
             <h1 className=" pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
                 Users
             </h1>
             <Sheet>
-            <SheetTrigger> <Button variant={"default"}  className="max-w-xs" >Add User</Button> </SheetTrigger>
+            <SheetTrigger> <Button variant={"default"}  className="max-w-xs mb-4" >Add User</Button> </SheetTrigger>
             <SheetContent>
                 <SheetHeader>
                 <SheetTitle>Add a new user</SheetTitle>
@@ -130,7 +139,7 @@ export const Users = ()=>{
         </div>
 
         <div className="bg-background w-full">
-            <DataTable columns={columns} data={usersData} />
+            <DataTable filters={filters} columns={columns} data={usersData} />
         </div>
 
 

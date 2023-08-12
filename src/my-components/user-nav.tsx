@@ -17,8 +17,19 @@
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar"
 import { AvatarFallback } from "@/components/ui/avatar"
+import { useNavigate } from "react-router-dom"
   
   export function UserNav() {
+
+
+    const navigate = useNavigate()
+
+    const handleLogout = ()=>{
+
+        navigate("/login")
+
+    }
+
     return (
 
 
@@ -57,7 +68,7 @@ import { AvatarFallback } from "@/components/ui/avatar"
             <DropdownMenuItem>New Team</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={handleLogout}>
             Log out
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>

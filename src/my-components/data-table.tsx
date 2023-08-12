@@ -26,14 +26,24 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
  
+
+export interface FilterProps  {
+
+  accessor: string,
+  placeholder: string
+}
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  data: TData[],
+  
+  filters: FilterProps[]
+
 }
  
 export function DataTable<TData, TValue>({
   columns,
   data,
+  filters
 }: DataTableProps<TData, TValue>) {
 
 
@@ -56,20 +66,33 @@ export function DataTable<TData, TValue>({
       columnFilters,
     },
   })
+
+
+  
  
   return (
     <div className="rounded-md border w-full">
 
-      <div className="flex items-center py-4 px-4">
-        <Input 
-          placeholder="Filter username"
-          value={(table.getColumn("username")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("username")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-      </div>
+      <div className="flex items-center py-4 px-4 gap-4">
+        {
+    
+            filters.map((filter, index) =><Input 
+                              key={index}
+                              placeholder={filter.placeholder}
+                              value={(table.getColumn(filter.accessor)?.getFilterValue() as string) ?? ""}
+                              onChange={(event) =>
+                                table.getColumn(filter.accessor)?.setFilterValue(event.target.value)
+                              }
+                              className="max-w-xs"
+                            />)
+
+        }
+
+        
+          
+        </div>
+
+
 
       <Table>
         <TableHeader>
