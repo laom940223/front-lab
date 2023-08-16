@@ -27,9 +27,6 @@ const createClientSchema = z.object({
   billingAddress: z.string().min(2, {
     message: "Billing address must be at least 2 characters.",
   }),
-  sampleSite: z.string().min(2, {
-    message: "Sample site must be at least 2 characters.",
-  }),
   liable: z.string().min(2,{ message:"Liable needs to be al teast 2 charactes"}),
   email: z.string().email().min(2,{ message:"Email needs to be al teast 2 charactes"}),
   phone : z.string().length(10, "Phone must be 10 digits long")
@@ -49,7 +46,7 @@ export function AddClientForm({ className, onClose ,  addClient, clientEdit ,...
       email: clientEdit?.email ||  "",
       liable: clientEdit?.liable || "",
       phone: clientEdit?.phone || "",
-      sampleSite: clientEdit?.sampleSite || ""
+      
        
     },
   })
@@ -105,20 +102,7 @@ export function AddClientForm({ className, onClose ,  addClient, clientEdit ,...
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="sampleSite"
-            render={({field}) => (
-              <FormItem>
-                <FormLabel>Sample Site</FormLabel>
-                <FormControl>
-                    <Input type="text" placeholder="Sample Site"  {...field} />
-                </FormControl>
-                
-                {form.formState.errors.sampleSite ? <FormMessage > {form.formState.errors.sampleSite.message}</FormMessage>: null }
-              </FormItem>
-            )}
-          />
+         
 
         <FormField
             control={form.control}

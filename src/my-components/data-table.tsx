@@ -36,7 +36,7 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[],
   
-  filters: FilterProps[]
+  filters?: FilterProps[]
 
 }
  
@@ -73,25 +73,33 @@ export function DataTable<TData, TValue>({
   return (
     <div className="rounded-md border w-full">
 
-      <div className="flex items-center py-4 px-4 gap-4">
-        {
-    
-            filters.map((filter, index) =><Input 
-                              key={index}
-                              placeholder={filter.placeholder}
-                              value={(table.getColumn(filter.accessor)?.getFilterValue() as string) ?? ""}
-                              onChange={(event) =>
-                                table.getColumn(filter.accessor)?.setFilterValue(event.target.value)
-                              }
-                              className="max-w-xs"
-                            />)
+      {
+        filters ?
 
-        }
+          <div className="flex items-center py-4 px-4 gap-4">
+          {
 
-        
-          
+              filters.map((filter, index) =><Input 
+                                key={index}
+                                placeholder={filter.placeholder}
+                                value={(table.getColumn(filter.accessor)?.getFilterValue() as string) ?? ""}
+                                onChange={(event) =>
+                                  table.getColumn(filter.accessor)?.setFilterValue(event.target.value)
+                                }
+                                className="max-w-xs"
+                              />)
+
+          } 
+
+
+            
         </div>
+        : null
 
+
+      }
+
+      
 
 
       <Table>

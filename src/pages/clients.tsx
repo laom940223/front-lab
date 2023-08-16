@@ -35,8 +35,8 @@ export const clientsData = [
         email:"industrialParq@gmail.com",
         liable:"Agustin Cazares",
         phone:"6182568545",
-        sampleSite:"Carretera Trinidad Narro Mass 8000, Saltillo, Coahuila",
-        billingAddress:"Billing Addreess"
+        billingAddress:"Carretera Trinidad Narro Mass 8000, Saltillo, Coahuila",
+        
 
     },
      {
@@ -45,7 +45,7 @@ export const clientsData = [
         email:"industrialParq@gmail.com",
         liable:"Agustin Cazares",
         phone:"6182568545",
-        sampleSite:"Caseta de peaje Cuencam� km 143 + 700, Cuencam� de Ceniceros, Durango, CP: 35800"
+        billingAddress:"Caseta de peaje Cuencam� km 143 + 700, Cuencam� de Ceniceros, Durango, CP: 35800"
 
     },
 
@@ -55,7 +55,7 @@ export const clientsData = [
         email:"industrialParq@gmail.com",
         liable:"Agustin Cazares",
         phone:"6182568545",
-        sampleSite:"Sin numero, s/n Nixtalpa, Durango, C.P 34850"
+        billingAddress:"Sin numero, s/n Nixtalpa, Durango, C.P 34850"
 
     },
      {
@@ -64,7 +64,7 @@ export const clientsData = [
         email:"industrialParq@gmail.com",
         liable:"Agustin Cazares",
         phone:"6182568545",
-        sampleSite:"Sin numero, s/n Nixtalpa, Durango, C.P 34850"
+        billingAddress:"Sin numero, s/n Nixtalpa, Durango, C.P 34850"
 
     }
 
@@ -115,7 +115,7 @@ export const Clients = ()=>{
             <div className="flex items-center">
 
 
-                <Link to={`/users/${row.original.id}`}>
+                <Link to={`/clients/${row.original.id}`}>
                     <Button variant={"ghost"} size={"sm"} ><DetailIcon/></Button>
                 </Link>
                 
@@ -132,7 +132,10 @@ export const Clients = ()=>{
                 </Sheet>
 
 
-                <Dialog >
+
+            
+
+                <Dialog     >
                     <DialogTrigger >
                         <Button variant={"ghost"} size={"sm"} className="text-red-400"> <Trash/></Button>
                     </DialogTrigger>
@@ -200,7 +203,7 @@ export const Clients = ()=>{
             <Sheet   open={openAdd} onOpenChange={setOpenAdd}  >
             <SheetTrigger > <Button variant={"default"}  className="max-w-xs mb-4" >Add Client</Button> </SheetTrigger>
             
-            <SheetContent>
+            <SheetContent >
                 <SheetHeader>
                 <SheetTitle>Add a new client</SheetTitle>
                 <SheetDescription>

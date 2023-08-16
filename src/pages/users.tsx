@@ -56,7 +56,7 @@ export const columns: ColumnDef<User>[] = [
         header: "Actions",
         cell: ({ row }) => {
           
-            console.log(row.original.id)
+            
      
           return (
             <div className="flex items-center">
@@ -67,9 +67,9 @@ export const columns: ColumnDef<User>[] = [
                 <SheetContent>
                     <SheetHeader>
                     <SheetTitle>Edit User</SheetTitle>
-                    <SheetDescription>
+                    
                         <EditUserForm user={row.original}/>
-                    </SheetDescription>
+                    
                     </SheetHeader>
                 </SheetContent>
                 </Sheet>
@@ -82,6 +82,7 @@ export const columns: ColumnDef<User>[] = [
                     <DialogContent>
                         <DialogHeader>
                         <DialogTitle className="text-red-800">Are you sure absolutely sure?</DialogTitle>
+                        
                         <DialogDescription>
                             This action cannot be undone. This will permanently delete your account
                             and remove your data from our servers.
