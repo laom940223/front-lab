@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
  import { SampleIdentification} from "../../types/clients"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 
 interface AddEditSampleIdentificationProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -30,17 +31,15 @@ const createClientSchema = z.object({
   }),
   
   latDegress: z.coerce.number().min(0),
-
   latMinutes:  z.coerce.number().min(0),
-
   latSeconds: z.coerce.number().min(0),
+  latDirection: z.string(),
+
 
   lonDegress: z.coerce.number().min(0),
-
   lonMinutes: z.coerce.number().min(0),
-
   lonSeconds: z.coerce.number().min(0),
-
+  lonDirection: z.string(),
 
   siralab: z.boolean(),
   obsolete: z.boolean()
@@ -59,9 +58,15 @@ export function AddEditSamleIdentification({ className,      ...props }: AddEdit
       latDegress:0,
       latMinutes:0,
       latSeconds:0,
+      latDirection:"NORTH",
+
+
       lonDegress:0,
       lonMinutes:0,
       lonSeconds:0,
+      lonDirection:"EAST",
+
+
       obsolete: false,
       siralab:false,
       
@@ -153,6 +158,33 @@ export function AddEditSamleIdentification({ className,      ...props }: AddEdit
                     )}
                 />
 
+
+                <FormField
+                control={form.control}
+                name="latDirection"
+                render={({ field }) => (
+                
+                    <>
+                    
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                        <SelectTrigger>
+                        <SelectValue placeholder="Direction" />
+                        </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                        <SelectItem value="SOUTH">South</SelectItem>
+                        <SelectItem value="NORTH">North</SelectItem>
+                        
+                    </SelectContent>
+                    </Select>
+                    
+                    </>
+                )}
+                />
+
+
+
                 {form.formState.errors.latDegress ? <FormMessage > {form.formState.errors.latDegress.message}</FormMessage>: null }
             </FormItem>
 
@@ -203,6 +235,31 @@ export function AddEditSamleIdentification({ className,      ...props }: AddEdit
                         {form.formState.errors.lonSeconds ? <FormMessage > {form.formState.errors.lonSeconds.message}</FormMessage>: null }
                     </>
                     )}
+                />
+
+
+                <FormField
+                control={form.control}
+                name="lonDirection"
+                render={({ field }) => (
+                
+                    <>
+                    
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                        <SelectTrigger>
+                        <SelectValue placeholder="Direction" />
+                        </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                        <SelectItem value="EAST">East</SelectItem>
+                        <SelectItem value="WEST">West</SelectItem>
+                        
+                    </SelectContent>
+                    </Select>
+                    
+                    </>
+                )}
                 />
 
             </FormItem>
