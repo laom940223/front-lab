@@ -1,4 +1,4 @@
-
+import { Toaster } from "@/components/ui/toaster"
 import {Outlet} from "react-router-dom"
 import { UserNav } from "./user-nav"
 import { Search } from "./search"
@@ -8,7 +8,10 @@ import { SidebarNav } from "./sidebar-nav"
 
 export const Layout = ()=>{
 
+    // const { pathname } = useLocation()
         
+    // const arr  = pathname.split("/")
+    // console.log(arr)
 
     return(
         <div className=" relative h-[100vh] flex w-full flex-wrap p-0">
@@ -25,17 +28,22 @@ export const Layout = ()=>{
             </div>
 
             <div className="w-full mt-[60px]  flex ">
-                <div className="w-[15%] border-r-2 p-4">
+                <div className="w-[12%] border-r-2 p-4">
                     <SidebarNav />
                 </div>
                 
                 <div className="w-[85%] p-6">
+                    {/* <div className="flex w-full">
+                        {pathname}
+                    </div> */}
                     <Outlet/>
                 </div>
                 
             </div>
 
+            <Toaster/>
+            
         </div>
-    )
+       )
 
 }

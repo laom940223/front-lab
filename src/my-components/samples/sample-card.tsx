@@ -100,7 +100,7 @@ export function SampleCard(){
                 <SheetTrigger> <Button variant={"ghost"} size={"sm"}> E</Button></SheetTrigger>
                 <SheetContent>
                     <SheetHeader>
-                    <SheetTitle>Edit Client</SheetTitle>
+                    <SheetTitle>Edit identification</SheetTitle>
                     <SheetDescription>
                         To Do
                     </SheetDescription>
@@ -170,7 +170,7 @@ export function SampleCard(){
                 </h4>
 
                 <div className="flex w-full justify-end  ">
-                    <Sheet open={addSite} onOpenChange={setAddSite}>
+                    <Sheet >
                         <SheetTrigger>  <Button  variant={"secondary"}>Edit </Button></SheetTrigger>
                         <SheetContent>
                             <SheetHeader>
